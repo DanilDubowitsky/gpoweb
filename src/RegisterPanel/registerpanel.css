@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&display=swap');
+body{
+    margin: 0;
+}
+.reg-div{
+    display: flex;
+}
+.register-form{
+    margin-right: auto;
+    margin-left: auto;
+}
+.reg-user-lable{
+    margin-top: 130px;
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 30px;
+}
+.Login select{
+    border: 1px solid #DDDDDD;
+    box-sizing: border-box;
+    border-radius: 5px;
+    width: 481px;
+    height: 46px;
+}
