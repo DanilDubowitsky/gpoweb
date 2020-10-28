@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&display=swap');
+
+body{
+    margin: 0;
+}
+.container-start-page{
+    width: 1406px;
+    height: 788px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.name-test-start{
+    padding-top: 71px;
+    width: 1144px;
+    height: 139px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.name-test-start span{
+    font-family: Inter;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 140%;
+    color: #000000;
+}
+.type-test-div{
+    width: 1144px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.type-test-div span{
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 140%;
+    color: #000000;
+}
+.button-div-start button{
+    margin-top: 30px;
+    background: #1565D8;
+    font-family: Inter;
+    font-size: 16px;
+    color: #FFFF;
+    font-weight: 500;
+    width: 480px;
+    height: 64px;
+    border-radius: 6px;
+}
+.button-div-start{
+    margin-top: 95px;
+    margin-left: 470px;
+    margin-right: 456px;
+}
+.warning-start{
+    margin-left: 150px;
+    margin-top: 191px;
+}
+.warning-start span{
+    font-family: Inter;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 140%;
+    text-align: center;
+    color: #000000;
+}

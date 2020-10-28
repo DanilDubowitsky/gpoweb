@@ -1,6 +1,11 @@
 import React from "react";
 import {NavBar} from "../NavBar/navbar";
 import './courses.css'
+import {CourseCard} from "../CourseCard/course-card";
+let coursesElements = [{
+    name:'Метрология',
+    teacher: 'Учитель 1'
+},{name: 'ОБЖ',teacher: 'Учитель 2'},{name: 'Коммуникационные сети', teacher: 'Учитель 3'}];
 
 export const MyCourses = () => {
     return (
@@ -18,16 +23,8 @@ export const MyCourses = () => {
                     <div>
                         <img src={require('../images/line.png')}/>
                     </div>
-                    <div className={'card-course'}>
-                        <div className={'course-name'}>
-                            <span>Название предмета</span>
-                        </div>
-                        <div className={'fio'}>
-                            <span>
-                                Преподаватель: Фио преподавателя
-                            </span>
-                        </div>
-                    </div>
+
+                    <CourseCard courses={coursesElements}/>
                 </div>
             </div>
         </div>

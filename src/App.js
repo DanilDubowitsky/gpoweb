@@ -7,6 +7,8 @@ import {RegisterPanel} from "./RegisterPanel/register-js";
 import {NavBar} from "./NavBar/navbar"
 import {MyCourses} from "./Courses/courses";
 import {Course} from "./Course/course";
+import {StartPage} from "./StartPage/start-page";
+
 function App() {
   return (
       <BrowserRouter>
@@ -17,6 +19,7 @@ function App() {
                   <Route path={'/register'} component={RegisterPanel}/>
                   <Route path={'/courses'} exact component={MyCourses}/>
                   <Route path={'/courses/1'} exact component={Course}/>
+                  <Route path={'/courses/1/start'} exact component = {StartPage}/>
               </Switch>
           </div>
       </BrowserRouter>
