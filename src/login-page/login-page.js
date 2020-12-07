@@ -1,6 +1,13 @@
 import React from "react";
 
 import './loginpage.css'
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+
+const login =()=>{
+    window.location.assign('http://localhost:3000/courses');
+}
+
 export const LoginPage = () => {
     return(
             <div className={'main-div'}>
@@ -17,20 +24,23 @@ export const LoginPage = () => {
                             <span>Авторизуйтесь в Вашем аккаунте</span>
                         </div>
                         <div className={'Login'}>
-                            <label>Логин</label>
-                            <input type={'text'}/>
+                            <TextField className={'login-text-field'} id="outlined-basic" label="Логин" variant="outlined"/>
                         </div>
                         <div className={'Password'}>
-                            <label>Пароль</label>
-                             <input type={'password'}/>
+                            <TextField id="outlined-password-input"
+                                       label="Пароль"
+                                       type="password"
+                                       autoComplete="current-password"
+                                       variant="outlined"/>
                         </div>
                         <div className={'remember'}>
                             <input type={'checkbox'}/>
                             <span className={'remember-txt'}>Запомни меня</span>
                             <span className={'forgot-pas'}>Забыли пароль?</span>
                         </div>
-                        <button className={'login-btn'}>Войти</button>
-
+                        <Button onClick={login} className={'login-btn'} variant="contained" color="primary" disableElevation>
+                             Войти
+                        </Button>
                     </div>
                 </div>
             </div>

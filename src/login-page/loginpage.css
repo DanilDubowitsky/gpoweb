@@ -5,16 +5,18 @@ body{
     margin: 0;
 }
 .main-div{
+    background: white;
     display: flex;
+    height: 100vh;
 }
 .imgDiv img{
     width: 960px;
-    height: 1080px;
+    height: 100vh;
 }
 .login-form{
     margin-top: 362px;
     margin-left: 272px;
-    width: 482px;
+    width: 50%;
     height: 427px;
     margin-right: auto;
 }
@@ -53,24 +55,11 @@ input[type = 'password']{
     width: 481px;
     height: 46px;
 }
-.Login label{
-    margin-top: 10px;
-    margin-bottom: 6px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    color: #4A5568;
-
+.Login{
+    margin-top: 20px;
 }
-.Password label{
-    margin-bottom: 6px;
-    margin-top: 10px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    color: #4A5568;
+.Password{
+    margin-top: 20px;
 }
 .remember-txt{
     margin-left: 3px;
@@ -121,4 +110,5 @@ input[type = 'checkbox']{
     font-weight: normal;
     font-size: 16px;
 }
+
 

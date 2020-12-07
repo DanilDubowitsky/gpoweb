@@ -1,0 +1,17 @@
+.cardQues{
+    margin-top: 50px;
+    background: #d9edf7;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+.question-txt{
+    margin-left: 30px;
+    padding-left: 30px;
+}
+.backgroundQuestions{
+    height: 100vh;
+    background: #FFFFFF;
+}
+.questionContent{
+    margin-left: 30px;
+}

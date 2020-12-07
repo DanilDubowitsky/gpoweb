@@ -2,12 +2,9 @@ import React from "react";
 import {NavBar} from "../NavBar/navbar";
 import './courses.css'
 import {CourseCard} from "../CourseCard/course-card";
-let coursesElements = [{
-    name:'Метрология',
-    teacher: 'Учитель 1'
-},{name: 'ОБЖ',teacher: 'Учитель 2'},{name: 'Коммуникационные сети', teacher: 'Учитель 3'}];
 
-export const MyCourses = () => {
+
+export const MyCourses = (props) => {
     return (
         <div className={'content'}>
             <div className={'nav-bar-div'}>
@@ -24,7 +21,7 @@ export const MyCourses = () => {
                         <img src={require('../images/line.png')}/>
                     </div>
 
-                    <CourseCard courses={coursesElements}/>
+                    <CourseCard courses={props.coursesElements}/>
                 </div>
             </div>
         </div>

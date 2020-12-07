@@ -16,7 +16,7 @@ export const StartPage = () =>{
                     <span>У вас бесконечно попыток пройти данный тест</span>
                 </div>
                 <div className={'button-div-start'}>
-                    <button className={'start-test-btn'}>Начать тестирование</button>
+                    <button className={'start-test-btn'} id={'startTestBtn'} onClick={startTest}>Начать тестирование</button>
                 </div>
                 <div className={'warning-start'}>
                     <span>Помните, если вы переключитесь на другую страницу Ваше тестирование закончится автоматически. </span>
@@ -24,4 +24,7 @@ export const StartPage = () =>{
             </div>
         </div>
     )
+}
+function startTest(){
+
 }

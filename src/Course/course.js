@@ -1,6 +1,7 @@
 import React from "react";
 import './course.css'
 import {NavBar} from "../NavBar/navbar";
+import Button from "@material-ui/core/Button";
 const TestCard = (props) =>{
     let card = props.test.map((test)=>
         <div className={'testCard'}>
@@ -20,10 +21,16 @@ const TestCard = (props) =>{
         <div>{card}</div>
     )
 }
-let tests = [{name: 'Контрольная работа № 1', desc: 'Измерения'},{name: 'Контрольная работа № 2', desc: 'Измерительные приборы'},
-    {name: 'Контрольная работа № 3', desc: 'Погрешности'}]
+const CreateTestButton = ()=>{
+    return(
+        <Button className={'btn-create'} variant="contained" color="primary" disableElevation>
+           Создать тест
+        </Button>
+    )
+}
 
-export const Course = () => {
+
+export const Course = (props) => {
     return (
         <div className={'content'}>
             <div className={'nav-bar-div'}>
@@ -39,7 +46,8 @@ export const Course = () => {
                     <div>
                         <img src={require('../images/line.png')}/>
                     </div>
-                    <TestCard test = {tests}/>
+                    <CreateTestButton/>
+                    <TestCard test = {props.tests}/>
                 </div>
             </div>
         </div>

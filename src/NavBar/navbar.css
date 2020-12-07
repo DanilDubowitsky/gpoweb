@@ -19,12 +19,17 @@ body{
     margin-left: 700px;
 }
 .link-nav{
+
     font-family: Inter;
     font-weight: 400;
     font-size: 26px;
     color: #000000;
     text-decoration: none;
     margin-left: 20px;
+}
+
+.Nav-bar a:hover{
+    text-decoration: underline;
 }
 .Nav-bar a.active{
 
