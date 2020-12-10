@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
@@ -18,9 +19,12 @@ let questions = [{id: 0,type: 'oneAns', question:'Вопрос 1 adadawdad',answ
     {id: 3,type: 'oneAns', question:'Вопрос 4 adadawdad',answers:['adad','adwadawdf','ffrgththf','gtrgrhjtyh']}
 ]
 
+function showDialog(){
+    console.log('НАЖАЛ');
+}
 ReactDOM.render(
   <React.StrictMode>
-    <App coursesElements={coursesElements} tests={tests} questions={questions}/>
+    <App coursesElements={coursesElements} tests={tests} questions={questions} onShow={showDialog}/>
   </React.StrictMode>,
   document.getElementById('root')
 );

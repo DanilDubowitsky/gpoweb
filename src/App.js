@@ -9,6 +9,7 @@ import {MyCourses} from "./Courses/courses";
 import {Course} from "./Course/course";
 import {StartPage} from "./StartPage/start-page";
 import {Questions} from "./Questions/Questions";
+import {CreateTest} from "./CreateTest/createTest";
 
 
 function App(props) {
@@ -23,6 +24,7 @@ function App(props) {
                   <Route exact path={'/courses/0'} render={()=><Course tests={props.tests} />}/>
                   <Route exact path={'/courses/0/start'} component = {StartPage}/>
                   <Route exact path={'/courses/0/questions'} render={() => <Questions questions={props.questions}/>}/>
+                  <Route exact path={'/courses/0/create'} render={()=><CreateTest showDialog={props.onShow}/>}/>
               </Switch>
           </div>
       </BrowserRouter>

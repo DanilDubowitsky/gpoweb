@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&display=swap');
+.createTestTxtDiv{
+    display: flex;
+}
+.createTestTxt{
+    font-family: Inter;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 140%;
+    /* or 50px */
+
+
+    color: #000000;
+    margin-left: auto;
+    margin-right: auto;
+}
+.addQuestionBtn{
+
+    width: 806px;
+    height: 94px;
+}
+.btnCreateDiv{
+    margin-top: 20px;
+    display: flex;
+}
+.btnCreateDiv div{
+    margin-left: auto;
+    margin-right: auto;
+}
+.modalButtonsDiv{
+    display: flex;
+}
+.modalBtn{
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
