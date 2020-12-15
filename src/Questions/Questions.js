@@ -10,7 +10,7 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 
 
-const TextAnswer = (props)=>{
+ const TextAnswer = (props)=>{
 
     let answ = (<div className={ques.questionContent}>
         <div className={ques.questionTxt}>
@@ -43,7 +43,7 @@ const OneAnswer = (props) =>{
 }
 
 
- const ManyAnswers = (props) => {
+const ManyAnswers = (props) => {
 
     let answrs = props.quest.answers.map((ans,index) => <FormControlLabel
         key={index}

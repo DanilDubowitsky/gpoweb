@@ -24,7 +24,7 @@ function App(props) {
                   <Route exact path={'/courses/0'} render={()=><Course tests={props.tests} />}/>
                   <Route exact path={'/courses/0/start'} component = {StartPage}/>
                   <Route exact path={'/courses/0/questions'} render={() => <Questions questions={props.questions}/>}/>
-                  <Route exact path={'/courses/0/create'} render={()=><CreateTest showDialog={props.onShow}/>}/>
+                  <Route exact path={'/courses/0/create'} render={()=><CreateTest addedQuestions={props.addedQuestions} addQuestion={props.addQuest}/>}/>
               </Switch>
           </div>
       </BrowserRouter>

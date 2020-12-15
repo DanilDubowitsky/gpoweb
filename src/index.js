@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import {func} from "prop-types";
 let coursesElements = [{
     name:'Метрология',
     teacher: 'Учитель 1'
@@ -18,16 +19,31 @@ let questions = [{id: 0,type: 'oneAns', question:'Вопрос 1 adadawdad',answ
     {id: 2,type:'manyAns',question: 'Вопрос 3 fghtyjtyjtyjtyjt',answers:['adad','adwadawdf','ffrgththf','gtrgrhjtyh']},
     {id: 3,type: 'oneAns', question:'Вопрос 4 adadawdad',answers:['adad','adwadawdf','ffrgththf','gtrgrhjtyh']}
 ]
+let createdQuestions = [
 
-function showDialog(){
-    console.log('НАЖАЛ');
+]
+
+function addQuestion(id){
+    if(id===1) {
+        createdQuestions.push({question: "Вопрос 1", type: 'oneAns',answers:['adad','adwadawdf','ffrgththf','gtrgrhjtyh']});
+    }
+    else if(id ===2){
+        createdQuestions.push({question:"Вопрос 2",type:'manyAns',answers:['adad','adwadawdf','ffrgththf','gtrgrhjtyh']});
+    }
+    else{
+        createdQuestions.push({question:"Вопрос 3",type:'text'});
+    }
+    renderEntireTree();
 }
-ReactDOM.render(
-  <React.StrictMode>
-    <App coursesElements={coursesElements} tests={tests} questions={questions} onShow={showDialog}/>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+function renderEntireTree() {
+    ReactDOM.render(
+        <React.StrictMode>
+            <App coursesElements={coursesElements} tests={tests} questions={questions} addedQuestions={createdQuestions} addQuest={addQuestion}/>
+        </React.StrictMode>,
+        document.getElementById('root')
+    );
+}
+renderEntireTree();
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
