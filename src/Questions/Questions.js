@@ -79,18 +79,6 @@ export const Questions = (props) =>{
     )
 
 
-    /*for(let i = 0;i<props.questions.length;i++){
-        if(props.questions[i].type === 'oneAns'){
-            testQuestion.push(<OneAnswer key={i} quest={props.questions[i]} />);
-        }
-         else if(props.questions[i].type === 'text'){
-            testQuestion.push(<TextAnswer key={i} quest={props.questions[i]}/>);
-        }
-        else{
-            testQuestion.push(<ManyAnswers key={i} quest={props.questions[i]}/>);
-        }
-    }*/
-
     return(
         <div className={ques.backgroundQuestions}>
             <NavBar/>

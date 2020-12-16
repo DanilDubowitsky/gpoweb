@@ -13,20 +13,29 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormGroup from "@material-ui/core/FormGroup";
+import createTestM from "../CreateTest/createTest.module.css"
 
 const TextAnswer = (props)=>{
-
+    let textAns = React.createRef();
+    let txtQues = React.createRef();
     let answ = (<div className={ques.questionContent}>
         <div className={ques.questionTxt}>
-            <span className={ques.questionTxt}>{props.quest.question}</span>
+            <input ref={txtQues} onChange={()=>props.onInputChange(props.id,null,txtQues.current.value)}  value={props.quest.question} placeholder={'Введите вопрос'}  type={'text'}></input>
         </div>
-        <TextField id="standard-basic" label="Ответ" />
+        <input type={'text'} ref={textAns} onChange={()=>props.onInputChange(props.id,0,textAns.current.value)}/>
     </div>)
     return(
         <div  className={ques.cardQues}>
             {answ}
             <div>
-
+                <div className={createTestM.controlElements}>
+                    <div>
+                        <img onClick={()=>props.onDeleteQuestion(props.id)}
+                             src={require('../images/remove.svg')}
+                             width={'35px'}
+                             height={'35px'}/>
+                    </div>
+                </div>
             </div>
         </div>
     )
@@ -34,48 +43,107 @@ const TextAnswer = (props)=>{
 
 const OneAnswer = (props) =>{
 
-    let answrs = props.quest.answers.map((ans,index) =>
-        <FormControlLabel key={index} value={ans} control={<Radio key={index} color={"primary"} />} label={ans} />
+    let text = React.createRef();
+    let textQuestion =[0,0,0,0,0,0];
+    let answrs =[];
+        props.quest.answers.map((ans,index) => {
+            textQuestion[index] = React.createRef();
+            if(props.quest.trueAns[index]) {
+                answrs.push(
+                    <div key={index}>
+                        <FormControlLabel value={ans}
+                                          control={<Radio checked={true}
+                                                          onChange={() => props.onCgangeCheck(props.id, index)}
+                                                          key={index}
+                                                          color={"primary"}/>}/>
+                        <input value={props.quest.answers[index]} ref={textQuestion[index]} onChange={() => props.onChangeValue(props.id, index, textQuestion[index].current.value)}
+                               type={'text'}/>
+                        <img onClick={() => props.onDeleteAns(props.id, index)} src={require('../images/remove.svg')}
+                             width={'35px'}
+                             height={'35px'}/>
+                    </div>
+                )
+            }
+            else{
+                answrs.push(
+                    <div key={index}>
+                        <FormControlLabel value={ans}
+                                          control={<Radio checked={false}
+                                                          onChange={() => props.onCgangeCheck(props.id, index)}
+                                                          key={index}
+                                                          color={"primary"}/>}/>
+                        <input value={props.quest.answers[index]} ref={textQuestion[index]} onChange={() => props.onChangeValue(props.id, index, textQuestion[index].current.value)}
+                               type={'text'}/>
+                        <img onClick={() => props.onDeleteAns(props.id, index)} src={require('../images/remove.svg')}
+                             width={'35px'}
+                             height={'35px'}/>
+                    </div>
+                )
+            }
+        }
     )
     return(
-        <div   className={ques.cardQues}>
+        <div  className={ques.cardQues}>
             <div className={ques.questionTxt}>
-                <span className={ques.questionTxt}>{props.quest.question}</span>
+                <input value={props.quest.question} ref={text} placeholder={'Введите вопрос'} onChange={()=>props.onChangeValue(props.id,null,text.current.value)}  type={'text'}/>
             </div>
             <RadioGroup className={ques.questionContent} aria-label="gender" name="gender1">
                 {answrs}
             </RadioGroup>
-            <Button variant={'primary'}>Добавить ответ</Button>
+            <div className={createTestM.controlElements}>
+                <div>
+                    <Button onClick={()=>props.onAddAnswer(props.id)} variant={'primary'}>Добавить ответ</Button>
+                </div>
+                <div>
+                    <img onClick={()=>props.onDeleteQuestion(props.id)} src={require('../images/remove.svg')} width={'35px'} height={'35px'}/>
+                </div>
+            </div>
         </div>
     )
 }
 
 
 const ManyAnswers = (props) => {
+    let value = React.createRef();
+    let answTxt = [0,0,0,0,0,0]
+    let answrs = [];
 
-    let answrs = props.quest.answers.map((ans,index) => <FormControlLabel
-            key={index}
-            control={<Checkbox  color={"primary"}  name="gilad" />}
-            label={ans}
-        />
+        props.quest.answers.map((ans,index) => {
+            answTxt[index] = React.createRef();
+            answrs.push(<div id={index} key={index}>
+                <FormControlLabel
+                    control={<Checkbox checked={props.quest.trueAns[index]}
+                                       onChange={() => props.onCgangeCheck(props.id, index)} color={"primary"}
+                                       name="gilad"/>}
+                />
+                <input value={props.quest.answers[index]} ref={answTxt[index]}
+                       onChange={() => props.onChangeValue(props.id, index, answTxt[index].current.value)} type={'text'}/>
+                <img onClick={() => props.onDeleteAns(props.id, index)} src={require('../images/remove.svg')}
+                     width={'35px'} height={'35px'}/>
+            </div>)
+        }
     )
     return(
         <div className={ques.cardQues}>
             <div className={ques.questionTxt}>
-                <span className={ques.questionTxt}>{props.quest.question}</span>
+                <input value={props.quest.question} ref={value} placeholder={'Введите вопрос'} onChange={()=>props.onChangeValue(props.id,null,value.current.value)}  type={'text'}/>
             </div>
             <FormGroup className={ques.questionContent}>
                 {answrs}
-                <Button variant={'primary'}>Добавить ответ</Button>
             </FormGroup>
+            <div className={createTestM.controlElements}>
+                <div>
+                    <Button onClick={()=>props.onAddAnswer(props.id)} variant={'primary'}>Добавить ответ</Button>
+                </div>
+                <div>
+                    <img onClick={()=>props.onDeleteQuestion(props.id)} src={require('../images/remove.svg')} width={'35px'} height={'35px'}/>
+                </div>
+            </div>
         </div>
     )
 }
 
-
-
-
-function ModalWindow(props,{addquestion}){
+function ModalWindow(props){
     return(
         <Modal
             {...props}
@@ -111,17 +179,36 @@ export const CreateTest = (props) =>{
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     let addedQuestions = [];
-    for(let i=0;i<props.addedQuestions.length;i++){
-        if(props.addedQuestions[i].type === 'oneAns'){
-            addedQuestions.push(<OneAnswer key={i} quest={props.addedQuestions[i]} />);
+    props.addedQuestions.map((an,index)=> {
+        if (an.type === 'oneAns') {
+            addedQuestions.push(<OneAnswer onDeleteQuestion={props.onDeleteQues}
+                                           id={index} key={index}
+                                           quest={an}
+                                           onAddAnswer={props.onAddAns}
+                                           onDeleteAns={props.onDeleteAns}
+                                           onChangeValue={props.onChangeInput}
+                                           onCgangeCheck={props.onChangeCheck}
+            />);
+        } else if (an.type === 'manyAns') {
+            addedQuestions.push(<ManyAnswers onDeleteQuestion={props.onDeleteQues}
+                                             id={index}
+                                             key={index}
+                                             quest={an}
+                                             onAddAnswer={props.onAddAns}
+                                             onDeleteAns={props.onDeleteAns}
+                                             onChangeValue={props.onChangeInput}
+                                             onCgangeCheck={props.onChangeCheck}
+            />);
+        } else {
+            addedQuestions.push(<TextAnswer onDeleteQuestion={props.onDeleteQues}
+                                            id={index}
+                                            key={index}
+                                            quest={an}
+                                            onInputChange={props.onChangeInput}
+            />);
         }
-        else if(props.addedQuestions[i].type === 'manyAns'){
-            addedQuestions.push(<ManyAnswers key={i} quest={props.addedQuestions[i]}/>);
-        }
-        else{
-            addedQuestions.push(<TextAnswer key={i} quest={props.addedQuestions[i]}/>);
-        }
-    }
+    })
+
     if(addedQuestions.length !==0) {
         return (
             <div>
@@ -136,6 +223,7 @@ export const CreateTest = (props) =>{
                         <div>
                             {addedQuestions}
                             <ModalWindow addQuestion={props.addQuestion} show={show} onHide={() => setShow(false)}/>
+                            <Button className={createCss.createTestBtn} onClick={()=>props.logTest()} type={'primary'}>Создать тест</Button>
                         </div>
                     </div>
                 </div>
@@ -156,6 +244,7 @@ export const CreateTest = (props) =>{
                         <div>
                             {addedQuestions}
                             <ModalWindow addQuestion={props.addQuestion} show={show} onHide={() => setShow(false)}/>
+                            <Button className={createCss.createTestBtn} onClick={()=>props.logTest()} type={'primary'}>Создать тест</Button>
                         </div>
                     </div>
                 </div>

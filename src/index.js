@@ -23,22 +23,106 @@ let createdQuestions = [
 
 ]
 
-function addQuestion(id){
-    if(id===1) {
-        createdQuestions.push({question: "Вопрос 1", type: 'oneAns',answers:['adad','adwadawdf','ffrgththf','gtrgrhjtyh']});
-    }
-    else if(id ===2){
-        createdQuestions.push({question:"Вопрос 2",type:'manyAns',answers:['adad','adwadawdf','ffrgththf','gtrgrhjtyh']});
-    }
-    else{
-        createdQuestions.push({question:"Вопрос 3",type:'text'});
+function onDelete(id){
+    createdQuestions.splice(id,1);
+    renderEntireTree();
+}
+
+function onDeleteAns(id,index){
+    createdQuestions[id].answers.splice(index, 1);
+    debugger;
+    if(createdQuestions[id].type==='manyAns') {
+        createdQuestions[id].trueAns.splice(index,1);
     }
     renderEntireTree();
 }
-function renderEntireTree() {
+
+function onChangeCheck(id,index){
+    if(createdQuestions[id].type === 'manyAns') {
+        createdQuestions[id].trueAns[index] = !createdQuestions[id].trueAns[index];
+    }
+    else{
+        for(let i=0;i<createdQuestions[id].trueAns.length;i++){
+            createdQuestions[id].trueAns[i] = false;
+        }
+        createdQuestions[id].trueAns[index] = true;
+    }
+
+    renderEntireTree();
+}
+
+function logTest(){
+    console.log(createdQuestions);
+}
+
+function onChangeInputValue(id,index,inputValue){
+    if(createdQuestions[id].type==='oneAns') {
+
+        if(index!==null) {
+
+            createdQuestions[id].answers[index] = inputValue;
+        }
+        else{
+
+            createdQuestions[id].question = inputValue;
+        }
+    }
+    else if(createdQuestions[id].type ==='manyAns'){
+        if(index!==null) {
+            createdQuestions[id].answers[index] = inputValue;
+
+        }
+        else{
+            createdQuestions[id].question = inputValue;
+
+        }
+    }
+    else{
+        if(index === null) {
+            createdQuestions[id].question = inputValue;
+            debugger
+        }
+        else{
+            createdQuestions[id].answer = inputValue;
+            debugger
+        }
+    }
+    renderEntireTree();
+}
+
+function addQuestion(id){
+    if(id===1) {
+        createdQuestions.push({question: "", type: 'oneAns',answers:['',''],trueAns:[false,false]});
+    }
+    else if(id ===2){
+        createdQuestions.push({question:"",type:'manyAns',answers:['',''],trueAns: [false,false]});
+    }
+    else{
+        createdQuestions.push({question:"",type:'text',answer:''});
+    }
+    renderEntireTree();
+}
+function addAns(id){
+    if(createdQuestions[id].answers.length < 7) {
+        createdQuestions[id].answers.push(' ');
+        createdQuestions[id].trueAns.push(false);
+        renderEntireTree();
+    }
+}
+export function renderEntireTree() {
     ReactDOM.render(
         <React.StrictMode>
-            <App coursesElements={coursesElements} tests={tests} questions={questions} addedQuestions={createdQuestions} addQuest={addQuestion}/>
+            <App
+                logCreatedTest={logTest}
+                onChangeCheck={onChangeCheck}
+                onChangeInputValue={onChangeInputValue}
+                deleteAns={onDeleteAns}
+                addAns={addAns}
+                 deleteQues={onDelete}
+                 coursesElements={coursesElements}
+                 tests={tests} questions={questions}
+                 addedQuestions={createdQuestions}
+                 addQuest={addQuestion}/>
         </React.StrictMode>,
         document.getElementById('root')
     );
